@@ -10,7 +10,7 @@ dp = Dispatcher()
 async def main():
     dp.include_router(router)
     await dp.start_polling(bot)
-
+#dsa
 if __name__ == '__main__':
     try:
         asyncio.run(main())
