@@ -33,5 +33,5 @@ async def question(message: Message):
         response = client.models.generate_content(
             model="gemini-2.0-flash", contents=[picca, image]
         )
-        #ya zaebalsya
+        #ya zaebalsyaa
         await message.answer(response.text)
