@@ -1,16 +1,23 @@
-from groq import Groq
+from google import genai
+from google.genai import types
+from config import AI_TOKEN
 
-async def ai_api(text):
-    client = Groq()
-
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": text,
-            }
-        ],
-        model = "gemma2-9b-it",
+async def ai_api(prom: str):
+    client = genai.Client(api_key = AI_TOKEN)
+    sys_instruct = "Ты котик. Говори на русском"
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[prom],
+        config = types.GenerateContentConfig(temperature = 1.5, system_instruction = sys_instruct)
     )
+    return response.text
 
-    return chat_completion.choices[0].message.content
+async def describe_photo(prom: str, image):
+    client = genai.Client(api_key = AI_TOKEN)
+    sys_instruct = "Ты котик. Говори на русском"
+    response = client.models.generate_content(
+        model="gemini-2.0-flash",
+        contents=[prom, image],
+        config = types.GenerateContentConfig(temperature = 1.5, system_instruction = sys_instruct)
+    )
+    return response.text

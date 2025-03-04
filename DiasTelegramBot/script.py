@@ -1,4 +1,4 @@
-import asyncio
+import asyncio, logging
 from aiogram import Bot, Dispatcher
 from config import TG_TOKEN
 from handlers import router
@@ -10,4 +10,8 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    logger = logging.getLogger(__name__)
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt as e:
+        logger.info('Sayonara!')
