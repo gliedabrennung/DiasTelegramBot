@@ -48,3 +48,4 @@ async def gemini(message: Message):
             logger.warning('Getting telegram bad request, converting answer')
             safe_response = sanitize_markdown(response[:4000])
             await message.reply(safe_response, parse_mode='Markdown')
+

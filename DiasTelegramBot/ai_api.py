@@ -21,3 +21,4 @@ async def describe_photo(prom: str, image):
         config = types.GenerateContentConfig(temperature = 1.5, system_instruction = sys_instruct)
     )
     return response.text
+
